@@ -1,0 +1,41 @@
+<!--pages/user/user.wxml-->
+<view id="userhead" bindlongtap="showUserTip" bindtap="showUserTip">
+  <view class="userinfo">
+    <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">用户名:{{userInfo.nickName}}</text> -->
+    <!-- <view class="container"> -->
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+<!-- </view> -->
+
+
+  </view>
+</view>
+<view id="other">
+  <view id='addr' style="background-image: url(../../image/saddress.png); background-position:20rpx center" bindtap="navigateToAddr">
+    我的收货地址
+  </view>
+
+  <view id='order'>
+  <!-- bindtap="navigateToOrder" -->
+    <view class='order-item' style="background-image: url(../../image/order.png); background-position:20rpx center" >
+      全部订单<text class='more'></text> 
+    </view>
+    <!-- bindtap="navigateToOrder_pay" -->
+    <view class='order-item' style="background-image: url(../../image/pay.png); background-position:20rpx center" >
+      待付款<text class='more'></text> 
+    </view>
+    <!-- bindtap="navigateToOrder_get" -->
+    <view class='order-item' style="background-image: url(../../image/need.png); background-position:20rpx center" >
+      待收货<text class='more'></text> 
+    </view>
+  </view>
+</view>
